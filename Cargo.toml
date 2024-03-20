@@ -1,0 +1,18 @@
+[package]
+name = "wasi-virt-transformer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bitflags = "2.5.0"
+wit-bindgen-rt = "0.22.0"
+# wasi-virt = { git = "https://github.com/fibonacci1729/wasi-virt", branch = "wasm-opt-feat", default-features = false }
+wasi-virt = { git = "https://github.com/bytecodealliance/wasi-virt" }
+
+[lib]
+crate-type = ["cdylib"]
+
+[package.metadata.component]
+package = "wasi:virt"
+
+[package.metadata.component.dependencies]

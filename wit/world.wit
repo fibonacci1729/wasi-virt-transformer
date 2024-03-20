@@ -1,0 +1,28 @@
+package wasi:virt;
+
+interface transform {
+    variant host-env {
+        none,
+        all,
+        allow(list<string>),
+        deny(list<string>),
+    }
+
+    record virt-env {
+        overrides: list<tuple<string, string>>,
+        host: host-env,
+    }
+
+    record options {
+        env: virt-env,
+    }
+
+    transform: func(
+        component: list<u8>, 
+        options: options,
+    ) -> result<list<u8>, string>;
+}
+
+world transformer {
+    export transform;
+}
